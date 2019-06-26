@@ -6,24 +6,24 @@ from Base import Conectar
 
 while True:
     value = LerEntrada.entrada_voz()
-    valueNew = LerEntrada.tratar_entrada(value)
-           
+    valueNew = LerEntrada.tratar_entrada(value) 
+   
     while True:
         if valueNew[0] == "ligar":
-            if valueNew[1] == "arcondicionado":
+            if len(valueNew) == 2 and valueNew[1] == "arcondicionado":
                 print("Ar condicionado ligado")
 
-            elif valueNew[1] == "televisão":
+            elif len(valueNew) == 2 and valueNew[1] == "televisão":
                 Conectar.chama_msg()
                 print("Televisão ligada")
                 
-            elif valueNew[1] == ("lâmpada" or "lampada"):
-                if valueNew[2] == ("sala"):
+            elif len(valueNew) == 2 and valueNew[1] == ("lâmpada" or "lampada"):
+                if len(valueNew) == 3 and valueNew[2] == ("sala"):
                     GPIO.output(5, GPIO.HIGH)
                     print("Lâmpada da sala ligada")
                     break
                         
-                elif valueNew[2] == "cozinha":
+                elif len(valueNew) == 3 and valueNew[2] == "cozinha":
                     GPIO.output(6, GPIO.HIGH)
                     print("Lâmpada da cozinha ligada")
                     break
@@ -34,19 +34,19 @@ while True:
                 break
 
         elif valueNew[0] == "desligar":
-            if valueNew[1] == "ar":
+            if len(valueNew) == 2 and valueNew[1] == "ar":
                 print("Desligou o Ar condicionado")
             
-            elif valueNew[1] == "televisão":
+            elif len(valueNew) == 2 and valueNew[1] == "televisão":
                 print("Televisão desligada")
             
-            elif valueNew[1] == ("lâmpada" or "lampada"):
-                if valueNew[2] == ("sala"):
+            elif len(valueNew) == 2 and valueNew[1] == ("lâmpada" or "lampada"):
+                if len(valueNew) == 3 and valueNew[2] == ("sala"):
                     GPIO.output(5, GPIO.LOW)
                     print("Lâmpada da sala desligada")
                     break
                         
-                elif valueNew[2] == "cozinha":
+                elif len(valueNew) == 3 and valueNew[2] == "cozinha":
                     GPIO.output(6, GPIO.LOW)
                     print("Lâmpada da cozinha desligada")
                     break
